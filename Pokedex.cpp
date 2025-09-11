@@ -9,7 +9,6 @@ std::vector<Pokemon> lireCSV(const std::string& nomFichier) {
     std::ifstream fichier(nomFichier); // Ouvre le fichier
     if (!fichier.is_open()) { // Vérifie si le fichier est bien ouvert
         std::cerr << "Impossible d'ouvrir le fichier : " << nomFichier << std::endl;
-        exit(EXIT_FAILURE);
     }
     std::string ligne;
     std::getline(fichier, ligne);
@@ -49,24 +48,11 @@ Pokedex* Pokedex::getInstance() {
     return pinstance;
 }
 
-Pokemon SetOfPokemon::findByIndex(int index) const {
-    return Pokemon(listPokemon.at(index));
-}
-
-Pokemon SetOfPokemon::findByName(std::string name) const {
-    try {
-        for (Pokemon poke : listPokemon) {
-            if (poke.getName() == name)
-                return Pokemon(poke);
-        }
-    } catch (...) {
-        std::cout << name << " n'est pas dans le Pokedex" << std::endl;
-    }
-}
-
 Pokedex::~Pokedex() {
 
 }
-SetOfPokemon::~SetOfPokemon() {
 
+Pokemon Pokedex::copyPokemonbyName(std::string &pokemonName) {
+    Pokemon copied(this->findByName(pokemonName));
+        return copied;
 }

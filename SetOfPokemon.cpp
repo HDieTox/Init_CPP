@@ -9,3 +9,22 @@ void SetOfPokemon::printList() const {
         std::cout << i << " | " << listPokemon.at(i).getName() << std::endl;
     }
 }
+
+Pokemon SetOfPokemon::findByIndex(int index) const {
+    return Pokemon(listPokemon.at(index));
+}
+
+Pokemon SetOfPokemon::findByName(std::string name) const {
+    try {
+        for (Pokemon poke : listPokemon) {
+            if (poke.getName() == name)
+                return Pokemon(poke);
+        }
+    } catch (...) {
+        std::cout << name << " n'est pas dans le Pokedex" << std::endl;
+    }
+}
+
+SetOfPokemon::~SetOfPokemon() {
+
+}

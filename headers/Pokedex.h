@@ -24,9 +24,7 @@ private:
 
 public:
     static Pokedex* getInstance();
-
-   // Pokemon findByIndex(int index) const;
-   // Pokemon findByName(std::string name) const;
+    Pokemon copyPokemonbyName(std::string &pokemonName);
 
 };
 

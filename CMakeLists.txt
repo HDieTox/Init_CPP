@@ -10,7 +10,9 @@ add_executable(tp1 main.cpp
         SetOfPokemon.cpp
         headers/SetOfPokemon.h
         Pokedex.cpp
-        headers/Pokedex.h)
+        headers/Pokedex.h
+        PCPokemon.cpp
+        headers/PCPokemon.h)
 
 target_link_libraries(tp1
         sfml-graphics
