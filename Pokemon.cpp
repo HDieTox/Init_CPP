@@ -5,12 +5,14 @@ using namespace std;
 int Pokemon::countPokemon = 0;
 
 void Pokemon::displayInfo() const {
-    std::cout << "ID: " << id << std::endl;
-    std::cout << "Name: " << name << std::endl;
-    std::cout << "HP: " << hp << std::endl;
-    std::cout << "Attack: " << attack << std::endl;
-    std::cout << "Defense: " << defense << std::endl;
-    std::cout << "Generation: " << generation << std::endl;
+    cout << "........................................" << endl;
+    cout << "ID: " << id << endl;
+    cout << "Name: " << name << endl;
+    cout << "HP: " << hp << endl;
+    cout << "Attack: " << attack << endl;
+    cout << "Defense: " << defense << endl;
+    cout << "Generation: " << generation << endl;
+    cout << "........................................" << endl;
 }
 
 double Pokemon::getHP() const {
@@ -24,6 +26,10 @@ double Pokemon::getDefense() const {
 }
 string Pokemon::getName() const {
     return name;
+}
+
+int Pokemon::getId() const {
+    return id;
 }
 
 void Pokemon::setHP(const double &newHP) {

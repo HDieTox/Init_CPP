@@ -16,8 +16,13 @@ private:
 public:
     PCPokemon(int id, std::string name): id(id), name(name) {}
 
+    int getId() const;
+    std::string getName() const;
+
     void addPokemon(const Pokemon &pokemon);
-    void removePokemon(Pokemon pokemon);
+    void removePokemon(const Pokemon &pokemon);
+
+    void displayPC() const;
 };
 
 

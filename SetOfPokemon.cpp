@@ -15,14 +15,11 @@ Pokemon SetOfPokemon::findByIndex(int index) const {
 }
 
 Pokemon SetOfPokemon::findByName(std::string name) const {
-    try {
-        for (Pokemon poke : listPokemon) {
-            if (poke.getName() == name)
-                return Pokemon(poke);
-        }
-    } catch (...) {
-        std::cout << name << " n'est pas dans le Pokedex" << std::endl;
+    for (Pokemon poke : listPokemon) {
+        if (poke.getName() == name)
+            return Pokemon(poke);
     }
+    throw std::invalid_argument(name + " : Pokemon does not exist");
 }
 
 SetOfPokemon::~SetOfPokemon() {

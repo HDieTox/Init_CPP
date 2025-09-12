@@ -1,4 +1,6 @@
 #include <iostream>
+
+#include "headers/PCPokemon.h"
 #include "headers/Pokemon.h"
 
 #include "headers/Pokedex.h"
@@ -12,12 +14,16 @@ int main() {
     Tiplouf.strike(Salameche);
     Tiplouf.strike(Salameche);
 
-    Pokedex::getInstance()->findByName("Charizard").displayInfo();
-    Pokedex * test = Pokedex::getInstance();
-    Pokedex * test1 = Pokedex::getInstance();
-    Pokedex * test2 = Pokedex::getInstance();
-    Pokedex * test3 = Pokedex::getInstance();
+    PCPokemon BoiteTom(1,"PC de Tom");
+    PCPokemon BoiteMael(2,"PC de Mael");
 
+
+    BoiteTom.addPokemon(Pokedex::getInstance()->findByName("Charizard"));
+    BoiteTom.addPokemon(Pokedex::getInstance()->findByName("Charmander"));
+    BoiteTom.displayPC();
+
+    BoiteTom.removePokemon(Pokedex::getInstance()->findByName("Charizard"));
+    BoiteTom.displayPC();
 
     return 0;
 }

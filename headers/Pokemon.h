@@ -31,6 +31,7 @@ public:
     double getAttack() const;
     double getDefense() const;
     std::string getName() const;
+    int getId() const;
 
     void setHP(const double &newHP);
 
