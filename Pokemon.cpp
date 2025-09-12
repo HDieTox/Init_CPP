@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 int Pokemon::countPokemon = 0;
 
 void Pokemon::displayInfo() const {
@@ -36,6 +37,8 @@ void Pokemon::setHP(const double &newHP) {
     hp = newHP;
 }
 
+
+//Ici le code affichera is dead à chaque fois qu'il y a strike, il ne fait pas la différence entre tuer et déjà mort
 void Pokemon::strike(Pokemon &target) const {
     double damageDealt = attack - target.getDefense();
     if (damageDealt > 0) {
