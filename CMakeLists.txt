@@ -16,9 +16,9 @@ add_executable(tp1 main.cpp
         TeamPokemon.cpp
         headers/TeamPokemon.h)
 
-target_link_libraries(tp1
-        sfml-graphics
-        sfml-window
-        sfml-system
-        sfml-audio
+    target_link_libraries(tp1
+        #sfml-graphics
+        #sfml-window
+        #sfml-system
+        #sfml-audio
 )
