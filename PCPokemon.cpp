@@ -4,6 +4,8 @@
 
 #include "headers/PCPokemon.h"
 
+#include <algorithm>
+
 int PCPokemon::getId() const {
     return id;
 }
@@ -12,15 +14,23 @@ std::string PCPokemon::getName() const {
     return name;
 }
 
-void PCPokemon::addPokemon(const Pokemon &pokemon) {
+void PCPokemon::addPokemonToPC(const Pokemon &pokemon) {
     this->listPokemon.push_back(pokemon);
 }
 
-void PCPokemon::removePokemon(const Pokemon &pokemon) {
-    for (int i = 0; i < this->listPokemon.size(); i++) {
-        if (this->listPokemon.at(i).getId() == pokemon.getId()) {
-            this->listPokemon.erase(this->listPokemon.begin() + i);
+void PCPokemon::removePokemonFromPC(const Pokemon &pokemon) {
+    auto index = std::find_if(
+        listPokemon.begin(),
+        listPokemon.end(),
+        [&](const Pokemon& p) {
+            return p.getId() == pokemon.getId();
         }
+    );
+
+    if (index != listPokemon.end()) {
+        listPokemon.erase(index);
+    } else {
+        std::cout << "ERROR: Pokemon not found in PC" << std::endl;
     }
 }
 

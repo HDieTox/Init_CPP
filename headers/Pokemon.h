@@ -27,6 +27,10 @@ public:
         countPokemon++;
     }
 
+    Pokemon(const int id) : name("NULL"), hp(-1), attack(-1), defense(-1), generation(-1) {
+        this->id = id;
+    }
+
     double getHP() const;
     double getAttack() const;
     double getDefense() const;

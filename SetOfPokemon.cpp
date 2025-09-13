@@ -10,16 +10,16 @@ void SetOfPokemon::printList() const {
     }
 }
 
-Pokemon SetOfPokemon::findByIndex(int index) const {
+Pokemon SetOfPokemon::findByIndex(const int index) const {
     return Pokemon(listPokemon.at(index));
 }
 
-Pokemon SetOfPokemon::findByName(std::string name) const {
+Pokemon SetOfPokemon::findByName(const std::string &name) const {
     for (Pokemon poke : listPokemon) {
         if (poke.getName() == name)
             return Pokemon(poke);
     }
-    throw std::invalid_argument(name + " : Pokemon does not exist");
+    return Pokemon(-1);
 }
 
 SetOfPokemon::~SetOfPokemon() {
