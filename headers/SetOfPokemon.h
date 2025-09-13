@@ -18,7 +18,7 @@ protected:
 
 public:
     Pokemon findByIndex(int index) const;
-    Pokemon findByName(std::string name) const ;
+    Pokemon findByName(const std::string& name) const ;
 
     void printList() const;
 

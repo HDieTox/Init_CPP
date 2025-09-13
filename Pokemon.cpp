@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 int Pokemon::countPokemon = 0;
 
 void Pokemon::displayInfo() const {
@@ -32,17 +33,39 @@ int Pokemon::getId() const {
     return id;
 }
 
+bool Pokemon::getAlive() const {
+    return isAlive;
+}
+
 void Pokemon::setHP(const double &newHP) {
     hp = newHP;
 }
 
+
+//Ici le code affichera is dead à chaque fois qu'il y a strike, il ne fait pas la différence entre tuer et déjà mort
+
 void Pokemon::strike(Pokemon &target) const {
-    double damageDealt = attack - target.getDefense();
-    if (damageDealt > 0) {
-        target.setHP(target.getHP() - damageDealt);
+    if (isAlive) {
+        double damageDealt = attack - target.getDefense();
+        if (damageDealt > 0) {
+            target.setHP(target.getHP() - damageDealt);
+        }
+        if (target.getHP() <= 0) {
+            target.setHP(0);
+            cout << "Your " << target.getName() << " is DEAADD" << endl;
+            target.isAlive = false;
+        }
+    }else {
+        cout << target.getName() << " is already DEAADD" << endl;
     }
-    if (target.getHP() <= 0) {
-        target.setHP(0);
-        cout << "Your " << target.getName() << " is DEAADD" << endl;
+}
+
+void Pokemon::sometimesCriticalStrike(Pokemon &target) const {
+    if (random()<critChance) {
+            cout<< "critical strike" << endl;
+            strike(target);
+            strike(target);
+        }else{
+        strike(target);
     }
 }

@@ -15,28 +15,40 @@ class Pokemon {
     double attack;
     double defense;
     int generation;
+    bool isAlive;
 
+    double critChance =  0.40;
+    int critDamage = 2;
 public:
     Pokemon(const int id, const std::string name, const double hp, const double attack, const double defense, const int generation)
     : id(id), name(name), hp(hp), attack(attack), defense(defense), generation(generation) {
         countPokemon++;
+        isAlive = true;
     }
 
     Pokemon(const Pokemon &basePokemon):
     id(basePokemon.id), name(basePokemon.name), hp(basePokemon.hp), attack(basePokemon.attack), defense(basePokemon.defense), generation(basePokemon.generation) {
         countPokemon++;
+        isAlive = basePokemon.isAlive;
     }
 
-    double getHP() const;
-    double getAttack() const;
-    double getDefense() const;
-    std::string getName() const;
-    int getId() const;
+    [[nodiscard]] double crit_chance() const {return critChance;}
+
+    [[nodiscard]] int crit_damage() const {return critDamage;}
+
+    [[nodiscard]] double getHP() const;
+    [[nodiscard]] double getAttack() const;
+    [[nodiscard]] double getDefense() const;
+    [[nodiscard]] std::string getName() const;
+    [[nodiscard]] int getId() const;
+    bool getAlive() const;
 
     void setHP(const double &newHP);
 
     void displayInfo() const;
     void strike(Pokemon &target) const;
+
+    void sometimesCriticalStrike(Pokemon &target) const;
 
     ~Pokemon() {
         countPokemon--;

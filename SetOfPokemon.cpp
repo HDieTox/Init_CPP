@@ -14,7 +14,9 @@ Pokemon SetOfPokemon::findByIndex(int index) const {
     return Pokemon(listPokemon.at(index));
 }
 
-Pokemon SetOfPokemon::findByName(std::string name) const {
+
+
+Pokemon SetOfPokemon::findByName(const std::string& name) const {
     for (Pokemon poke : listPokemon) {
         if (poke.getName() == name)
             return Pokemon(poke);
