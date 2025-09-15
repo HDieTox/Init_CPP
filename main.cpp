@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include "States/headers/StateMachine.h"
 #include "Pokemon/headers/PCPokemon.h"
 #include "Pokemon/headers/Pokedex.h"
 #include "Pokemon/headers/Pokemon.h"
@@ -7,7 +8,7 @@
 
 
 int main() {
-
+/*
     Pokemon Tiplouf(1,"Tiplouf",15,35,15,1);
     Pokemon Salameche(2,"Salameche",15,25,25,1);
     Pokemon Mewtwo(150,"Mewtwo",106,110,90,1);
@@ -39,7 +40,12 @@ int main() {
     std::cout << "Charmander déposé : " << std::endl;
     TeamTom.displayTeam();
     BoiteTom.displayPC();
+*/
 
+    StateMachine *myStateMachine = new StateMachine();
+    for (int i = 0; i < 10; i++) {
+        myStateMachine->state();
+    }
 
 
     return 0;

@@ -14,7 +14,19 @@ add_executable(tp1 main.cpp
         Pokemon/PCPokemon.cpp
         Pokemon/headers/PCPokemon.h
         Pokemon/TeamPokemon.cpp
-        Pokemon/headers/TeamPokemon.h)
+        Pokemon/headers/TeamPokemon.h
+        States/StateMachine.cpp
+        States/headers/StateMachine.h
+        States/HomeScreen.cpp
+        States/headers/HomeScreen.h
+        States/Exploration.cpp
+        States/headers/Exploration.h
+        States/FoundPokemon.cpp
+        States/headers/FoundPokemon.h
+        States/FoundTrainer.cpp
+        States/headers/FoundTrainer.h
+        States/GameOver.cpp
+        States/headers/GameOver.h)
 
     target_link_libraries(tp1
         #sfml-graphics
