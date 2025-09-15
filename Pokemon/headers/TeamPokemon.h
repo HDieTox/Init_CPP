@@ -12,7 +12,7 @@
 class TeamPokemon : public SetOfPokemon {
 private:
     PCPokemon& linkedPC;
-    static const int MAX_TEAM_SIZE = 6;
+    static constexpr int MAX_TEAM_SIZE = 6;
 
 public:
     TeamPokemon(const std::vector<std::string>& names, PCPokemon& linkedPC): linkedPC(linkedPC) {
@@ -32,7 +32,7 @@ public:
     };
 
     void addPokemonToTeam(const Pokemon &pokemon);
-    void removePokemonFromTeam(const Pokemon &pokemon, PCPokemon PCDest);
+    void removePokemonFromTeam(const Pokemon &pToRemove, PCPokemon &PCDest);
 
     void displayTeam() const;
 };

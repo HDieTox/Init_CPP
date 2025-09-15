@@ -27,10 +27,10 @@ void PCPokemon::removePokemonFromPC(const Pokemon &pokemon) {
         }
     );
 
-    if (index != listPokemon.end()) {
-        listPokemon.erase(index);
-    } else {
+    if (index->getId() == -1) {
         std::cout << "ERROR: Pokemon not found in PC" << std::endl;
+    } else if (index != listPokemon.end()) {
+        listPokemon.erase(index);
     }
 }
 

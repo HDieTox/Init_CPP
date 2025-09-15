@@ -1,10 +1,9 @@
 #include <iostream>
 
-#include "headers/PCPokemon.h"
-#include "headers/Pokemon.h"
-
-#include "headers/Pokedex.h"
-#include "headers/TeamPokemon.h"
+#include "Pokemon/headers/PCPokemon.h"
+#include "Pokemon/headers/Pokedex.h"
+#include "Pokemon/headers/Pokemon.h"
+#include "Pokemon/headers/TeamPokemon.h"
 
 
 int main() {
