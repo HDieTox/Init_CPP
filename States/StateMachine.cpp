@@ -7,6 +7,7 @@
 #include <iostream>
 #include <ostream>
 
+#include "headers/GameOver.h"
 #include "headers/HomeScreen.h"
 
 using namespace std;
@@ -14,14 +15,30 @@ using namespace std;
 AbstractState::AbstractState(StateMachine *stateMachine)
     : stateMachine(stateMachine){}
 
-StateMachine::StateMachine() {
+StateMachine::StateMachine(sf::RenderWindow &win, int id, std::string pcName) : playerTeam({},playerPC), playerPC(id,pcName), window(win) {
     currentState = new HomeScreen(this);
 }
 
-void StateMachine::setCurrentState(AbstractState *abstractState) {
-    currentState = abstractState;
+void StateMachine::setCurrentState(AbstractState *newState) {
+    if (currentState != nullptr) {
+        delete currentState;
+    }
+    currentState = newState;
+    if (dynamic_cast<GameOver*>(newState)) {
+        cout << "Game Over" << endl;
+        gameOver = true;
+    }
 }
 
-void StateMachine::state() const {
-    currentState->state();
+bool StateMachine::isGameOver() const {
+    if (gameOver) return true;
+    return false;
+}
+
+void StateMachine::update() const {
+    currentState->update();
+}
+
+void StateMachine::render() const {
+    currentState->render(window);
 }

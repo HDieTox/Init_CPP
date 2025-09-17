@@ -29,8 +29,8 @@ add_executable(tp1 main.cpp
         States/headers/GameOver.h)
 
     target_link_libraries(tp1
-        #sfml-graphics
-        #sfml-window
-        #sfml-system
-        #sfml-audio
+        sfml-graphics
+        sfml-window
+        sfml-system
+        sfml-audio
 )

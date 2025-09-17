@@ -6,6 +6,22 @@
 
 #include <algorithm>
 
+TeamPokemon::TeamPokemon(const std::vector<std::string>& names, PCPokemon& linkedPC): linkedPC(linkedPC) {
+    if (names.size() >= MAX_TEAM_SIZE) {
+        std::cout << "ERROR : MaxTeamSize = 6" << std::endl;
+    }else {
+        for (const std::string& name : names) {
+            Pokemon found = linkedPC.findByName(name);
+            if (found.getId() != -1) {
+                this->listPokemon.push_back(found);
+                linkedPC.removePokemonFromPC(found);
+            } else {
+                std::cout << "Pokemon " << name << " not found in PC" << std::endl;
+            }
+        }
+    }
+}
+
 void TeamPokemon::addPokemonToTeam(const Pokemon &pokemon) {
     if (this->listPokemon.size() >= MAX_TEAM_SIZE) {
         std::cout << "ERROR : Team is full" << std::endl;
@@ -31,6 +47,15 @@ void TeamPokemon::removePokemonFromTeam(const Pokemon &pToRemove, PCPokemon &PCD
     }
 }
 
+void TeamPokemon::captureWildPokemon(const Pokemon& pokemon) {
+    if (this->listPokemon.size() >= MAX_TEAM_SIZE) {
+        linkedPC.addPokemonToPC(pokemon);
+        std::cout << "Team is full, " << pokemon.getName() << " was sent to PC!" << std::endl;
+    } else {
+        this->listPokemon.push_back(pokemon);
+        std::cout << pokemon.getName() << " was added to your team!" << std::endl;
+    }
+}
 
 void TeamPokemon::displayTeam() const{
     std::cout << "Team Display : Linked PC : " << this->linkedPC.getName() << std::endl;

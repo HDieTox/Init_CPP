@@ -48,11 +48,11 @@ Pokedex* Pokedex::getInstance() {
     return pinstance;
 }
 
-Pokedex::~Pokedex() {
-
-}
-
 Pokemon Pokedex::copyPokemonbyName(std::string &pokemonName) {
     Pokemon copied(this->findByName(pokemonName));
         return copied;
+}
+
+int Pokedex::getPokedexSize() {
+    return listPokemon.size();
 }

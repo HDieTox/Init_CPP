@@ -20,11 +20,11 @@ private:
     std::string path_to_pokedex="";
     Pokedex(const std::string &path_to_pokedex) ;
     static Pokedex *pinstance;
-    ~Pokedex();
 
 public:
     static Pokedex* getInstance();
     Pokemon copyPokemonbyName(std::string &pokemonName);
+    int getPokedexSize();
 
 };
 

@@ -5,48 +5,35 @@
 #include "Pokemon/headers/Pokedex.h"
 #include "Pokemon/headers/Pokemon.h"
 #include "Pokemon/headers/TeamPokemon.h"
+#include <SFML/Graphics.hpp>
 
-
+#include "States/headers/HomeScreen.h"
 int main() {
-/*
-    Pokemon Tiplouf(1,"Tiplouf",15,35,15,1);
-    Pokemon Salameche(2,"Salameche",15,25,25,1);
-    Pokemon Mewtwo(150,"Mewtwo",106,110,90,1);
-    Tiplouf.strike(Salameche);
-    Tiplouf.strike(Salameche);
-    Mewtwo.sometimesCriticalStrike(Tiplouf);
+    sf::RenderWindow window(sf::VideoMode(960, 540), "Mon Jeu Pokemon");
+    StateMachine* game = new StateMachine(window,1,"Tom's PC");
 
-    PCPokemon BoiteTom(1,"PC de Tom");
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
 
-    BoiteTom.addPokemonToPC(Pokedex::getInstance()->findByName("Charizard"));
-    BoiteTom.addPokemonToPC(Pokedex::getInstance()->findByName("Charmander"));
-    BoiteTom.displayPC();
+            if (event.type == sf::Event::KeyPressed) {
+                if (event.key.code == sf::Keyboard::Escape) {
+                    window.close();
+                }
+            }
 
-    const std::vector<std::string> maTeam = {"Charmander", "Charmeleon"};
-    TeamPokemon TeamTom(maTeam, BoiteTom);
+            // Passez tous les événements à la machine à état
+            game->handleEvent(event);
+        }
 
-    std::cout << "Team créé : " << std::endl;
-    TeamTom.displayTeam();
-
-    TeamTom.addPokemonToTeam(BoiteTom.findByName("Charizard"));
-
-    std::cout << "Charizard recup : " << std::endl;
-    TeamTom.displayTeam();
-    BoiteTom.displayPC();
-
-
-    TeamTom.removePokemonFromTeam(TeamTom.findByName("Charmander"), BoiteTom);
-
-    std::cout << "Charmander déposé : " << std::endl;
-    TeamTom.displayTeam();
-    BoiteTom.displayPC();
-*/
-
-    StateMachine *myStateMachine = new StateMachine();
-    for (int i = 0; i < 10; i++) {
-        myStateMachine->state();
+        game->update();
+        game->render();
+        window.display();
     }
 
-
+    delete game;
     return 0;
 }

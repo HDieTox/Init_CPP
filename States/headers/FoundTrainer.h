@@ -10,7 +10,11 @@
 class FoundTrainer : public AbstractState {
 public:
     FoundTrainer(StateMachine* stateMachine);
-    void state() override;
+    void handleEvent(const sf::Event& event) override;
+    void update() override;
+    void render(sf::RenderWindow &window) override;
+
+    ~FoundTrainer() override = default;
 };
 
 
